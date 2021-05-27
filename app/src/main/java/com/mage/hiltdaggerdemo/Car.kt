@@ -7,6 +7,8 @@ import javax.inject.Inject
  * function:
  * date    :2021/5/27
  **/
-class AnalyticsAdapter @Inject constructor(
-    private val service: AnalyticsService
-)
+class Car @Inject constructor() {
+    fun drive(name: String) {
+        println("老司机$name 在线开车")
+    }
+}
