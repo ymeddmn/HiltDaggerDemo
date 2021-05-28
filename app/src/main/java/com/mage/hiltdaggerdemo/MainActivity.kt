@@ -11,22 +11,19 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    @Truck//使用卡车注解，真实注入类型为TruckCar
     @Inject
-    lateinit var client: OkHttpClient
+    lateinit var truck: Car
+
+    @Taxi//使用出租车注解，真实注入类型为TruckCar
     @Inject
-    lateinit var request: Request
+    lateinit var taxi: Car
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn.setOnClickListener {
-            client.newCall(request).enqueue(object :Callback{
-                override fun onFailure(call: Call, e: IOException) {
-                    println("请求失败")
-                }
-                override fun onResponse(call: Call, response: Response) {
-                    println("请求成功")
-                }
-            })
+            truck.drive("mage")
+            taxi.drive("mage")
         }
     }
 }
